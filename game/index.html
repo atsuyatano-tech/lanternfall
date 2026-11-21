@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LANTERNFALL — a lantern-lit stealth game</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #070a14; height: 100%; overflow: hidden; }
+  body { display: flex; align-items: center; justify-content: center; font-family: Georgia, 'Times New Roman', serif; }
+  #wrap { position: relative; width: 1280px; height: 800px; box-shadow: 0 0 60px rgba(0,0,0,.8); }
+  canvas { display: block; background: #10182c; }
+  #hud {
+    position: absolute; left: 0; right: 0; top: 0; height: 46px;
+    display: flex; align-items: center; gap: 22px; padding: 0 16px;
+    color: #e8ddc0; font-size: 15px; letter-spacing: .04em;
+    background: linear-gradient(to bottom, rgba(5,8,18,.82), rgba(5,8,18,0));
+    pointer-events: none; user-select: none;
+  }
+  #hud .lvl { color: #f4c96b; font-variant: small-caps; font-size: 17px; }
+  #hud .obj { color: #cfd8ea; }
+  #hud .spacer { flex: 1; }
+  #eyeWrap { display: flex; align-items: center; gap: 7px; }
+  #eyeBarOuter { width: 110px; height: 9px; border: 1px solid rgba(232,221,192,.55); border-radius: 5px; overflow: hidden; background: rgba(0,0,0,.45); }
+  #eyeBar { height: 100%; width: 0%; background: #f4c96b; transition: width .12s linear, background .12s linear; }
+  #hint {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 6px 16px;
+    color: rgba(207,216,234,.62); font-size: 12.5px; letter-spacing: .03em;
+    background: linear-gradient(to top, rgba(5,8,18,.75), rgba(5,8,18,0));
+    pointer-events: none; user-select: none;
+  }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" width="1280" height="800"></canvas>
+  <div id="hud">
+    <span class="lvl" id="hudLevel">LANTERNFALL</span>
+    <span class="obj" id="hudObjective">Steal the Ember Ledger</span>
+    <span class="spacer"></span>
+    <span id="eyeWrap"><span id="eyeIcon">ALERT</span><span id="eyeBarOuter"><div id="eyeBar"></div></span></span>
+    <span id="hudCoins">Coins: 3</span>
+    <span id="hudScore">Score: 0</span>
+  </div>
+  <div id="hint">WASD / arrows — move &nbsp;·&nbsp; Shift — sneak (silent) &nbsp;·&nbsp; Space — run (loud) &nbsp;·&nbsp; Click — toss a coin &nbsp;·&nbsp; P — pause &nbsp;·&nbsp; R — restart</div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
